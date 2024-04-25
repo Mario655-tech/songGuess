@@ -7,8 +7,10 @@ const button4 = document.createElement("button")
 
 let lyrics_excerpt, song, randomButtonIndex;
 let wrongSongs = [];
+start()
 
-fetch('https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=281172')
+function start() {
+    fetch('https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=281172')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -26,7 +28,7 @@ fetch('https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=281172')
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
-
+}
 
 function guess() {
     randomButtonIndex = Math.floor(Math.random() * 4) + 1;
@@ -103,6 +105,63 @@ function generateWrong() {
             }
         }
     });
+}
+
+button1.addEventListener("click", () => {
+    check(1)
+})
+
+button2.addEventListener("click", () => {   
+    check(2)
+})
+
+button3.addEventListener("click", () => {
+    check(3)
+})
+
+button4.addEventListener("click", () => {
+    check(4)
+})
+
+function check(buttonID) {
+    switch (buttonID) {
+        case 1:
+            if (button1.textContent === song) {
+                console.log("Tocno!")
+                start()
+            } else {
+                console.log("Nije Tocno.")
+                start()
+            }
+            break;
+        case 2:
+            if (button2.textContent === song) {
+                console.log("Tocno!")
+                start()
+            } else {
+                console.log("Nije Tocno.")
+                start()
+            }
+            break;
+        case 3:
+            if (button3.textContent === song) {
+                console.log("Tocno!")
+                start()
+            } else {
+                console.log("Nije Tocno.")
+                start()
+            }
+            break;
+        case 4:
+            if (button4.textContent === song) {
+                console.log("Tocno!")
+                start()
+            } else {
+                console.log("Nije Tocno.")
+                start()
+            }
+            break;
+    }
 }
 
 container.appendChild(text)
