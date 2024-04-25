@@ -1,16 +1,21 @@
 const container = document.querySelector("#container")
+const containerText = document.querySelector("#text")
+const containerButtons = document.querySelector("#buttons")
+const row1 = document.querySelector("#row1")
+const row2 = document.querySelector("#row2")
 const text = document.createElement("h1")
 const button1 = document.createElement("button")
 const button2 = document.createElement("button")
 const button3 = document.createElement("button")
 const button4 = document.createElement("button")
 
+const url = "https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=124218"
 let lyrics_excerpt, song, randomButtonIndex;
 let wrongSongs = [];
 start()
 
 function start() {
-    fetch('https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=281172')
+    fetch(url)
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -61,7 +66,7 @@ function generateWrong() {
 
     for (let i = 0; i < 3; i++) {
 
-    const fetchPromise = fetch('https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=281172')
+    const fetchPromise = fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -129,43 +134,59 @@ function check(buttonID) {
             if (button1.textContent === song) {
                 console.log("Tocno!")
                 start()
+                correctEvent()
             } else {
                 console.log("Nije Tocno.")
                 start()
+                falseEvent()
             }
             break;
         case 2:
             if (button2.textContent === song) {
                 console.log("Tocno!")
                 start()
+                correctEvent()
             } else {
                 console.log("Nije Tocno.")
                 start()
+                falseEvent()
             }
             break;
         case 3:
             if (button3.textContent === song) {
                 console.log("Tocno!")
                 start()
+                correctEvent()
             } else {
                 console.log("Nije Tocno.")
                 start()
+                falseEvent()
             }
             break;
         case 4:
             if (button4.textContent === song) {
                 console.log("Tocno!")
                 start()
+                correctEvent()
             } else {
                 console.log("Nije Tocno.")
                 start()
+                falseEvent()
             }
             break;
     }
 }
 
-container.appendChild(text)
-container.appendChild(button1)
-container.appendChild(button2)
-container.appendChild(button3)
-container.appendChild(button4)
+function correctEvent() {
+    
+}
+
+containerText.appendChild(text)
+row1.appendChild(button1)
+row1.appendChild(button2)
+row2.appendChild(button3)
+row2.appendChild(button4)
+
+container.appendChild(containerText)
+container.appendChild(containerButtons)
+
