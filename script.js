@@ -178,7 +178,18 @@ function check(buttonID) {
 }
 
 function correctEvent() {
-    
+    container.style.backgroundColor = "rgb(115, 158, 130)";
+    setTimeout(function() {
+        container.style.backgroundColor = "rgb(70, 83, 98)";
+    }, 500);
+
+}
+
+function falseEvent() {
+    container.style.backgroundColor = "rgb(237, 37, 78)";
+    setTimeout(function() {
+        container.style.backgroundColor = "rgb(70, 83, 98)";
+    }, 500);
 }
 
 containerText.appendChild(text)

@@ -1,10 +1,10 @@
 button {
   appearance: none;
-  background-color: #000000;
-  border: 2px solid #1A1A1A;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
   border-radius: 15px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #000000;
   cursor: pointer;
   display: inline-block;
   font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -44,6 +44,7 @@ button:active {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 #container {
@@ -52,24 +53,26 @@ button:active {
     align-items: center;
     justify-content: space-evenly;
     height: 100vh; 
+    background-color: rgb(70, 83, 98);
+    transition: background-color 0.5s ease;
 }
 
 #row1 {
-    margin-bottom: 1em;
+    margin-bottom: 0em;
 }
 
 #buttons {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
 button {
-    width: 200px; /* Set a fixed width */
-    height: 100px;
+    width: 11em; /* Set a fixed width */
+    height: 5em;
     margin: 5px; /* Optional: Add some margin around the buttons */
     flex-grow: 2;
+    font-size: ;
 }
 
 #row1 {
@@ -87,3 +90,15 @@ button {
     font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
 }
 
+h1 {
+    font-size: 1.5em;
+    color: rgb(244, 255, 253);
+    background: rgba(0, 0, 0,0.3);
+    border-radius: 0.5em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.green-bg {
+    background-color: green !important; /* Use !important to override inline style */
+}
