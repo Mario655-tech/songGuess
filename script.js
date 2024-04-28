@@ -9,7 +9,7 @@ const button2 = document.createElement("button")
 const button3 = document.createElement("button")
 const button4 = document.createElement("button")
 
-const url = "https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=124218"
+const url = "https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=74293"
 let lyrics_excerpt, song, randomButtonIndex;
 let wrongSongs = [];
 start()
@@ -19,7 +19,7 @@ function start() {
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
-    }
+    }       
     return response.json();
   })
   .then(data => {
@@ -31,7 +31,7 @@ function start() {
     guess();
   })
   .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
+    console.error('Start ERR There was a problem with the fetch operation:', error);
   });
 }
 
@@ -61,31 +61,29 @@ function guess() {
 }
 
 function generateWrong() {
-
-    const fetchPromises = [];
+    let fetchPromise = Promise.resolve(); // Initialize with a resolved promise
 
     for (let i = 0; i < 3; i++) {
-
-    const fetchPromise = fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            wrongSongs.push(data.song);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
+        fetchPromise = fetchPromise.then(() => {
+            return fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        start();
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    wrongSongs.push(data.song);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    start();
+                });
         });
-
-        fetchPromises.push(fetchPromise);
-        
     }
 
-    Promise.all(fetchPromises)
-    .then(() => {
+    fetchPromise.then(() => {
         for (let i = 1; i <= 4; i++) {
             if (i !== randomButtonIndex) {
                 const randomIndex = Math.floor(Math.random() * wrongSongs.length);
@@ -178,17 +176,17 @@ function check(buttonID) {
 }
 
 function correctEvent() {
-    container.style.backgroundColor = "rgb(115, 158, 130)";
+    text.style.background = "rgba(115, 158, 130, 1)";
     setTimeout(function() {
-        container.style.backgroundColor = "rgb(70, 83, 98)";
+        text.style.background = "rgba(0, 0, 0,0.3)";
     }, 500);
 
 }
 
 function falseEvent() {
-    container.style.backgroundColor = "rgb(237, 37, 78)";
+    text.style.background = "rgba(237, 37, 78, 1)";
     setTimeout(function() {
-        container.style.backgroundColor = "rgb(70, 83, 98)";
+        text.style.background= "rgba(0, 0, 0,0.3)";
     }, 500);
 }
 

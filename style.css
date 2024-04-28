@@ -54,7 +54,32 @@ button:active {
     justify-content: space-evenly;
     height: 100vh; 
     background-color: rgb(70, 83, 98);
-    transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease;    
+}
+
+#container {
+    background: linear-gradient(37deg, #11ffc2, #2d0aec, #0ac2ec, #000000, #ffffff);
+    background-size: 1000% 1000%;
+
+    -webkit-animation: AnimationName 11s ease infinite;
+    -moz-animation: AnimationName 11s ease infinite;
+    animation: AnimationName 11s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:33% 0%}
+    50%{background-position:68% 100%}
+    100%{background-position:33% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:33% 0%}
+    50%{background-position:68% 100%}
+    100%{background-position:33% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:33% 0%}
+    50%{background-position:68% 100%}
+    100%{background-position:33% 0%}
 }
 
 #row1 {
@@ -97,6 +122,7 @@ h1 {
     border-radius: 0.5em;
     padding-top: 10px;
     padding-bottom: 10px;
+    transition: background 0.7s ease; 
 }
 
 .green-bg {
