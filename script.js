@@ -1,9 +1,11 @@
 const container = document.querySelector("#container")
 const containerText = document.querySelector("#text")
 const containerButtons = document.querySelector("#buttons")
+const timeDiv = document.querySelector("#time")
 const row1 = document.querySelector("#row1")
 const row2 = document.querySelector("#row2")
 const text = document.createElement("h1")
+const timeLeft = document.createElement("h2")
 const button1 = document.createElement("button")
 const button2 = document.createElement("button")
 const button3 = document.createElement("button")
@@ -13,6 +15,7 @@ const url = "https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=74293
 let lyrics_excerpt, song, randomButtonIndex;
 let wrongSongs = [];
 start()
+timer()
 
 function start() {
     fetch(url)
@@ -26,7 +29,7 @@ function start() {
     lyrics_excerpt = data.lyrics_excerpt;
     song = data.song;
     console.log(song);
-    text.textContent = lyrics_excerpt
+    text.textContent = lyrics_excerpt.toLowerCase();
  
     guess();
   })
@@ -179,7 +182,7 @@ function correctEvent() {
     text.style.background = "rgba(115, 158, 130, 1)";
     setTimeout(function() {
         text.style.background = "rgba(0, 0, 0,0.3)";
-    }, 500);
+    }, 800);
 
 }
 
@@ -187,14 +190,33 @@ function falseEvent() {
     text.style.background = "rgba(237, 37, 78, 1)";
     setTimeout(function() {
         text.style.background= "rgba(0, 0, 0,0.3)";
-    }, 500);
+    }, 800);
 }
 
+function timer() {
+    let time = 10;
+
+    let timeInterval = setInterval(function () {
+        timeLeft.textContent = time
+        time--
+
+        if (time <= -1) {
+            clearInterval(timeInterval)
+        }
+
+    }, 1000)
+
+}
+
+
+timeDiv.appendChild(timeLeft)
 containerText.appendChild(text)
+containerText.appendChild(timeDiv)
 row1.appendChild(button1)
 row1.appendChild(button2)
 row2.appendChild(button3)
 row2.appendChild(button4)
+
 
 container.appendChild(containerText)
 container.appendChild(containerButtons)

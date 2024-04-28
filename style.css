@@ -1,7 +1,7 @@
 button {
   appearance: none;
   background-color: #ffffff;
-  border: 2px solid #ffffff;
+  border: 2px solid #000000;
   border-radius: 15px;
   box-sizing: border-box;
   color: #000000;
@@ -97,7 +97,6 @@ button {
     height: 5em;
     margin: 5px; /* Optional: Add some margin around the buttons */
     flex-grow: 2;
-    font-size: ;
 }
 
 #row1 {
@@ -125,6 +124,10 @@ h1 {
     transition: background 0.7s ease; 
 }
 
+h2 {
+    margin-top: 0.5em;
+    font-size: 4em;
+}
 .green-bg {
     background-color: green !important; /* Use !important to override inline style */
 }
