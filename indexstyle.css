@@ -14,6 +14,11 @@
     
 }
 
+h1 {
+    font-size: 1.7em;
+    color: rgb(0, 0, 0)
+}
+
 *,
 *:after,
 *:before {
@@ -22,13 +27,13 @@
 
 :root {
     --primary-color: #00005c; /* Change color here. C'mon, try it! */
-    --text-color: mix(#000, var(--primary-color), 64%);
+    --text-color: mix(#ffffff, var(--primary-color), 64%);
 }
 
 body {
     font-family: "Inter", sans-serif;
     color: var(--text-color);
-    font-size: calc(1em + 1.25vw);
+    font-size: calc(1.2em + 1.25vw);
     background-color: mix(#fff, var(--primary-color), 90%);
 
 }
@@ -46,6 +51,9 @@ label {
     position: relative;
     overflow: hidden;
     margin-bottom: 0.375em;
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    
 }
 
 input {
@@ -94,9 +102,9 @@ span:before {
     display: flex;
     justify-content: center;
     padding: 1.5em;
-  }
+}
 
-  button {
+button {
     appearance: none;
     background-color: #ffffff;
     border: 2px solid #ffffff;
@@ -106,11 +114,11 @@ span:before {
     cursor: pointer;
     display: inline-block;
     font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     line-height: normal;
     margin: 0;
-    min-height: 60px;
+    min-height: 80px;
     min-width: 0;
     outline: none;
     padding: 16px 24px;
@@ -120,17 +128,17 @@ span:before {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 50%;
+    width: 60%;
     will-change: transform;
-  }
+}
 
 body {
-    background: linear-gradient(37deg, #11ffc2, #2d0aec, #0ac2ec, #000000, #ffffff57, #b81616, #000000);
+    background: linear-gradient(37deg, #FFFF00, #001aff, #FF0000);
     background-size: 1000% 1000%;
 
-    -webkit-animation: AnimationName 15s ease infinite;
-    -moz-animation: AnimationName 15s ease infinite;
-    animation: AnimationName 15s ease infinite;
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
 }
 
 @-webkit-keyframes AnimationName {

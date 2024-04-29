@@ -13,16 +13,17 @@ const button2 = document.createElement("button")
 const button3 = document.createElement("button")
 const button4 = document.createElement("button")
 
-const links = [
-    'https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=569948',
-    'https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=124218',
-];
+let linksJSON = localStorage.getItem('links');
+let links = JSON.parse(linksJSON);
+console.log(links)
 
-let lyrics_excerpt, song, randomButtonIndex, url;
+
+
+let lyrics_excerpt, song, randomButtonIndex, url, gameState;
 let wrongSongs = [];
 let score = 0;
 start()
-timer(100)
+timer(60)
 
 timeLeft.textContent = "T" + time
 scoreText.textContent = "S" + score
@@ -146,6 +147,8 @@ button4.addEventListener("click", () => {
 })
 
 function check(buttonID) {
+    if (gameState !== 1) {
+
     switch (buttonID) {
         case 1:
             if (button1.textContent === song) {
@@ -192,15 +195,20 @@ function check(buttonID) {
             }
             break;
     }
+}else {
+    window.location.href = 'index.html';
+}
 }
 
 function correctEvent() {
     score++
     scoreText.textContent = "S" + score
     text.style.background = "rgba(115, 158, 130, 1)";
+    scoreText.style.color = "rgba(115, 158, 130, 1)";
     setTimeout(function () {
         text.style.background = "rgba(0, 0, 0,0.3)";
-    }, 800);
+        scoreText.style.color = "rgba(244, 255, 253)";
+    }, 1000);
 
 }
 
@@ -210,9 +218,11 @@ function falseEvent() {
     }
     scoreText.textContent = "S" + score
     text.style.background = "rgba(237, 37, 78, 1)";
+    scoreText.style.color = "rgba(237, 37, 78, 1)";
     setTimeout(function () {
         text.style.background = "rgba(0, 0, 0,0.3)";
-    }, 800);
+        scoreText.style.color = "rgba(244, 255, 253)";
+    }, 1000);
 }
 
 function timer(val) {
@@ -223,12 +233,14 @@ function timer(val) {
         time--
 
         if (time <= -1) {
-            clearInterval(timeInterval)
-            button1.disabled = true
-            button2.disabled = true
-            button3.disabled = true
-            button4.disabled = true
-            text.textContent = "Done"
+            clearInterval(timeInterval) 
+            text.textContent = "!  TIMES UP  !"
+            timeDiv.removeChild(timeLeft)
+            button1.textContent = "Play Again"
+            button2.textContent = "Play Again"
+            button3.textContent = "Play Again"
+            button4.textContent = "Play Again"
+            gameState = 1
         }
 
     }, 1000)
