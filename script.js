@@ -13,8 +13,12 @@ const button2 = document.createElement("button")
 const button3 = document.createElement("button")
 const button4 = document.createElement("button")
 
-const url = "https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=74293"
-let lyrics_excerpt, song, randomButtonIndex;
+const links = [
+    'https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=569948',
+    'https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=124218',
+];
+
+let lyrics_excerpt, song, randomButtonIndex, url;
 let wrongSongs = [];
 let score = 0;
 start()
@@ -23,25 +27,31 @@ timer(100)
 timeLeft.textContent = "T" + time
 scoreText.textContent = "S" + score
 
+function getRandomLink(links) {
+    const randomIndex = Math.floor(Math.random() * links.length);
+    return links[randomIndex];
+}
+
 function start() {
+    url = getRandomLink(links);
     fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }       
-    return response.json();
-  })
-  .then(data => {
-    lyrics_excerpt = data.lyrics_excerpt;
-    song = data.song;
-    console.log(song);
-    text.textContent = text.textContent = lyrics_excerpt.toLowerCase().substring(0, 100);
- 
-    guess();
-  })
-  .catch(error => {
-    console.error('Start ERR There was a problem with the fetch operation:', error);
-  });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            lyrics_excerpt = data.lyrics_excerpt;
+            song = data.song;
+            console.log(song);
+            text.textContent = text.textContent = lyrics_excerpt.toLowerCase().substring(0, 100);
+
+            guess();
+        })
+        .catch(error => {
+            console.error('Start ERR There was a problem with the fetch operation:', error);
+        });
 }
 
 function guess() {
@@ -66,7 +76,7 @@ function guess() {
             break;
     }
     generateWrong()
-    
+
 }
 
 function generateWrong() {
@@ -123,7 +133,7 @@ button1.addEventListener("click", () => {
     check(1)
 })
 
-button2.addEventListener("click", () => {   
+button2.addEventListener("click", () => {
     check(2)
 })
 
@@ -188,7 +198,7 @@ function correctEvent() {
     score++
     scoreText.textContent = "S" + score
     text.style.background = "rgba(115, 158, 130, 1)";
-    setTimeout(function() {
+    setTimeout(function () {
         text.style.background = "rgba(0, 0, 0,0.3)";
     }, 800);
 
@@ -200,8 +210,8 @@ function falseEvent() {
     }
     scoreText.textContent = "S" + score
     text.style.background = "rgba(237, 37, 78, 1)";
-    setTimeout(function() {
-        text.style.background= "rgba(0, 0, 0,0.3)";
+    setTimeout(function () {
+        text.style.background = "rgba(0, 0, 0,0.3)";
     }, 800);
 }
 
@@ -225,19 +235,14 @@ function timer(val) {
 
 }
 
-
 timeDiv.appendChild(scoreText)
 timeDiv.appendChild(timeLeft)
-
-
 containerText.appendChild(text)
 containerText.appendChild(timeDiv)
 row1.appendChild(button1)
 row1.appendChild(button2)
 row2.appendChild(button3)
 row2.appendChild(button4)
-
-
 container.appendChild(containerText)
 container.appendChild(containerButtons)
 

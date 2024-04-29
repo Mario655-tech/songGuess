@@ -1,0 +1,155 @@
+#scrollableList {
+ /* Set the maximum height of the list */
+    overflow-y: auto; /* Enable vertical scrolling */
+    
+}
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+
+#scrollableList {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #00005c; /* Change color here. C'mon, try it! */
+    --text-color: mix(#000, var(--primary-color), 64%);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--text-color);
+    font-size: calc(1em + 1.25vw);
+    background-color: mix(#fff, var(--primary-color), 90%);
+
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+label {
+    display: flex;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0.375em;
+}
+
+input {
+    position: absolute;
+    left: -9999px;
+}
+
+input:checked + span {
+    background-color: mix(#fff, var(--primary-color), 84%);
+}
+
+input:checked + span:before {
+    box-shadow: inset 0 0 0 0.4375em var(--primary-color);
+}
+
+span {
+    display: flex;
+    align-items: center;
+    padding: 0.375em 0.75em 0.375em 0.375em;
+    border-radius: 99em; /* or something higher... */
+    transition: 0.25s ease;
+}
+
+span:hover {
+    background-color: mix(#fff, var(--primary-color), 84%);
+}
+
+span:before {
+    display: flex;
+    flex-shrink: 0;
+    content: "";
+    background-color: #fff;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    margin-right: 0.375em;
+    transition: 0.25s ease;
+    box-shadow: inset 0 0 0 0.125em var(--primary-color);
+}
+
+.buttonStart {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 1.5em;
+  }
+
+  button {
+    appearance: none;
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 50%;
+    will-change: transform;
+  }
+
+body {
+    background: linear-gradient(37deg, #11ffc2, #2d0aec, #0ac2ec, #000000, #ffffff57, #b81616, #000000);
+    background-size: 1000% 1000%;
+
+    -webkit-animation: AnimationName 15s ease infinite;
+    -moz-animation: AnimationName 15s ease infinite;
+    animation: AnimationName 15s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:33% 0%}
+    50%{background-position:68% 100%}
+    100%{background-position:33% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:33% 0%}
+    50%{background-position:68% 100%}
+    100%{background-position:33% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:33% 0%}
+    50%{background-position:68% 100%}
+    100%{background-position:33% 0%}
+}
+
+
+
+
+  
