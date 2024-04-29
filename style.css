@@ -1,7 +1,7 @@
 button {
   appearance: none;
   background-color: #ffffff;
-  border: 2px solid #000000;
+  border: 2px solid #ffffff;
   border-radius: 15px;
   box-sizing: border-box;
   color: #000000;
@@ -58,12 +58,12 @@ button:active {
 }
 
 #container {
-    background: linear-gradient(37deg, #11ffc2, #2d0aec, #0ac2ec, #000000, #ffffff);
+    background: linear-gradient(37deg, #11ffc2, #2d0aec, #0ac2ec, #000000, #ffffff57, #b81616, #000000);
     background-size: 1000% 1000%;
 
-    -webkit-animation: AnimationName 11s ease infinite;
-    -moz-animation: AnimationName 11s ease infinite;
-    animation: AnimationName 11s ease infinite;
+    -webkit-animation: AnimationName 15s ease infinite;
+    -moz-animation: AnimationName 15s ease infinite;
+    animation: AnimationName 15s ease infinite;
 }
 
 @-webkit-keyframes AnimationName {
@@ -109,16 +109,21 @@ button {
     justify-content: center;
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
 #text {
     text-align: center;
-    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
 }
 
 h1 {
     font-size: 1.5em;
+    font-family: "DM Sans", sans-serif;
     color: rgb(244, 255, 253);
     background: rgba(0, 0, 0,0.3);
     border-radius: 0.5em;
+    margin-top: 1em;
     padding-top: 10px;
     padding-bottom: 10px;
     transition: background 0.7s ease; 
@@ -127,6 +132,29 @@ h1 {
 h2 {
     margin-top: 0.5em;
     font-size: 4em;
+    font-family: "DM Sans", sans-serif;
+    color: rgb(244, 255, 253);
+    border-radius: 0.5em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h3 {
+    margin-top: 0.5em;
+    font-size: 4em;
+    font-family: "DM Sans", sans-serif;
+    color: rgb(244, 255, 253);
+    border-radius: 0.5em;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+  
+}
+
+#time {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .green-bg {
     background-color: green !important; /* Use !important to override inline style */

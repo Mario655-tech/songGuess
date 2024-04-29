@@ -4,8 +4,10 @@ const containerButtons = document.querySelector("#buttons")
 const timeDiv = document.querySelector("#time")
 const row1 = document.querySelector("#row1")
 const row2 = document.querySelector("#row2")
+const scoreDiv = document.querySelector("#score")
 const text = document.createElement("h1")
 const timeLeft = document.createElement("h2")
+const scoreText = document.createElement("h3")
 const button1 = document.createElement("button")
 const button2 = document.createElement("button")
 const button3 = document.createElement("button")
@@ -14,8 +16,12 @@ const button4 = document.createElement("button")
 const url = "https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=74293"
 let lyrics_excerpt, song, randomButtonIndex;
 let wrongSongs = [];
+let score = 0;
 start()
-timer()
+timer(100)
+
+timeLeft.textContent = "T" + time
+scoreText.textContent = "S" + score
 
 function start() {
     fetch(url)
@@ -29,7 +35,7 @@ function start() {
     lyrics_excerpt = data.lyrics_excerpt;
     song = data.song;
     console.log(song);
-    text.textContent = lyrics_excerpt.toLowerCase();
+    text.textContent = text.textContent = lyrics_excerpt.toLowerCase().substring(0, 100);
  
     guess();
   })
@@ -179,6 +185,8 @@ function check(buttonID) {
 }
 
 function correctEvent() {
+    score++
+    scoreText.textContent = "S" + score
     text.style.background = "rgba(115, 158, 130, 1)";
     setTimeout(function() {
         text.style.background = "rgba(0, 0, 0,0.3)";
@@ -187,21 +195,30 @@ function correctEvent() {
 }
 
 function falseEvent() {
+    if (score > 0) {
+        score--
+    }
+    scoreText.textContent = "S" + score
     text.style.background = "rgba(237, 37, 78, 1)";
     setTimeout(function() {
         text.style.background= "rgba(0, 0, 0,0.3)";
     }, 800);
 }
 
-function timer() {
-    let time = 10;
+function timer(val) {
+    let time = val;
 
     let timeInterval = setInterval(function () {
-        timeLeft.textContent = time
+        timeLeft.textContent = "T" + time
         time--
 
         if (time <= -1) {
             clearInterval(timeInterval)
+            button1.disabled = true
+            button2.disabled = true
+            button3.disabled = true
+            button4.disabled = true
+            text.textContent = "Done"
         }
 
     }, 1000)
@@ -209,7 +226,10 @@ function timer() {
 }
 
 
+timeDiv.appendChild(scoreText)
 timeDiv.appendChild(timeLeft)
+
+
 containerText.appendChild(text)
 containerText.appendChild(timeDiv)
 row1.appendChild(button1)
