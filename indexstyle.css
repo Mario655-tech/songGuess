@@ -1,12 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 #scrollableList {
  /* Set the maximum height of the list */
     overflow-y: auto; /* Enable vertical scrolling */
     
 }
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
-
 
 #scrollableList {
     display: flex;
