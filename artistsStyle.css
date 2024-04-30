@@ -1,21 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
-#scrollableList {
- /* Set the maximum height of the list */
-    overflow-y: auto; /* Enable vertical scrolling */
-    
-}
-
-#scrollableList {
-    display: flex;
-    flex-direction: column;
-    
-}
-
-h1 {
-    font-size: 1.7em;
-    color: rgb(0, 0, 0)
-}
 
 *,
 *:after,
@@ -26,14 +10,6 @@ h1 {
 :root {
     --primary-color: #00005c; /* Change color here. C'mon, try it! */
     --text-color: mix(#ffffff, var(--primary-color), 64%);
-}
-
-body {
-    font-family: "Inter", sans-serif;
-    color: var(--text-color);
-    font-size: calc(1.2em + 1.25vw);
-    background-color: mix(#fff, var(--primary-color), 90%);
-
 }
 
 form {
@@ -49,9 +25,9 @@ label {
     position: relative;
     overflow: hidden;
     margin-bottom: 0.375em;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-weight: 900;
-    
+    font-size: 2em;
 }
 
 input {
@@ -111,12 +87,12 @@ button {
     color: #000000;
     cursor: pointer;
     display: inline-block;
-    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    font-size: 20px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 2em;
     font-weight: 600;
     line-height: normal;
     margin: 0;
-    min-height: 80px;
+    min-height: 60px;
     min-width: 0;
     outline: none;
     padding: 16px 24px;
@@ -126,33 +102,53 @@ button {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 60%;
+    width: 50%;
     will-change: transform;
 }
 
 body {
-    background: linear-gradient(37deg, #FFFF00, #001aff, #FF0000);
-    background-size: 1000% 1000%;
-
-    -webkit-animation: AnimationName 30s ease infinite;
-    -moz-animation: AnimationName 30s ease infinite;
-    animation: AnimationName 30s ease infinite;
+    background: linear-gradient(45deg,#ffff00,#001aff,#ff0000);
+    background-size: 180% 180%;
+    animation: gradient-animation 15s ease infinite;
+    height: 100vh;
+    font-family: "DM Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 100%;
+    }
+    50% {
+      background-position: 100% 0%;
+    }
+    100% {
+      background-position: 0% 100%;
+    }
 }
 
-@-webkit-keyframes AnimationName {
-    0%{background-position:33% 0%}
-    50%{background-position:68% 100%}
-    100%{background-position:33% 0%}
+.name {
+    font-weight: 900;
+    font-size: 3.5em;
+    margin-top: 1em;
+    color: white;
+    margin-bottom: 0;
 }
-@-moz-keyframes AnimationName {
-    0%{background-position:33% 0%}
-    50%{background-position:68% 100%}
-    100%{background-position:33% 0%}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-@keyframes AnimationName {
-    0%{background-position:33% 0%}
-    50%{background-position:68% 100%}
-    100%{background-position:33% 0%}
+
+.explain {
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: white;
 }
 
 

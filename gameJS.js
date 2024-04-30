@@ -23,7 +23,7 @@ let lyrics_excerpt, song, randomButtonIndex, url, gameState;
 let wrongSongs = [];
 let score = 0;
 start()
-timer(60)
+timer(90)
 
 timeLeft.textContent = "T" + time
 scoreText.textContent = "S" + score
@@ -196,7 +196,7 @@ function check(buttonID) {
             break;
     }
 }else {
-    window.location.href = 'index.html';
+    window.location.href = 'artists.html';
 }
 }
 

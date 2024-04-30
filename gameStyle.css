@@ -9,7 +9,7 @@ button {
   color: #000000;
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "DM Sans", sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -47,6 +47,7 @@ button:active {
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
+    font-family: "DM Sans";
 }
 
 #container {
@@ -55,33 +56,32 @@ button:active {
     align-items: center;
     justify-content: space-evenly;
     height: 100vh; 
-    background-color: rgb(70, 83, 98);
-    transition: background-color 0.5s ease;    
+    transition: background-color 0.5s ease;  
+    font-family: "DM Sans", sans-serif;;  
 }
 
 #container {
-    background: linear-gradient(37deg, #FFFF00, #001aff, #FF0000);
-    background-size: 1000% 1000%;
-
-    -webkit-animation: AnimationName 30s ease infinite;
-    -moz-animation: AnimationName 30s ease infinite;
-    animation: AnimationName 30s ease infinite;
-}
-
-@-webkit-keyframes AnimationName {
-    0%{background-position:33% 0%}
-    50%{background-position:68% 100%}
-    100%{background-position:33% 0%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:33% 0%}
-    50%{background-position:68% 100%}
-    100%{background-position:33% 0%}
-}
-@keyframes AnimationName {
-    0%{background-position:33% 0%}
-    50%{background-position:68% 100%}
-    100%{background-position:33% 0%}
+    background: linear-gradient(45deg,#ffff00,#001aff,#ff0000);
+    background-size: 180% 180%;
+    animation: gradient-animation 15s ease infinite;
+    height: 100vh;
+    font-family: "DM Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 100%;
+    }
+    50% {
+      background-position: 100% 0%;
+    }
+    100% {
+      background-position: 0% 100%;
+    }
 }
 
 #row1 {
