@@ -19,7 +19,7 @@ console.log(links)
 
 
 
-let lyrics_excerpt, song, randomButtonIndex, url, gameState;
+let lyrics_excerpt, song, randomButtonIndex, url, gameState, fetched;
 let wrongSongs = [];
 let score = 0;
 start()
@@ -34,6 +34,7 @@ function getRandomLink(links) {
 }
 
 function start() {
+    fetched = 1;
     url = getRandomLink(links);
     fetch(url)
         .then(response => {
@@ -52,6 +53,7 @@ function start() {
         })
         .catch(error => {
             console.error('Start ERR There was a problem with the fetch operation:', error);
+            NetworkError();
         });
 }
 
@@ -81,14 +83,14 @@ function guess() {
 }
 
 function generateWrong() {
-    let fetchPromise = Promise.resolve(); // Initialize with a resolved promise
+    let fetchPromise = Promise.resolve();
 
     for (let i = 0; i < 3; i++) {
         fetchPromise = fetchPromise.then(() => {
             return fetch(url)
                 .then(response => {
                     if (!response.ok) {
-                        start();
+                        NetworkError();
                         throw new Error('Network response was not ok');
                     }
                     return response.json();
@@ -98,7 +100,7 @@ function generateWrong() {
                 })
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error);
-                    start();
+                    NetworkError();
                 });
         });
     }
@@ -124,7 +126,7 @@ function generateWrong() {
                         console.error("Fatal error: No button found");
                         break;
                 }
-                wrongSongs.splice(randomIndex, 1); // Remove used song name from the array
+                wrongSongs.splice(randomIndex, 1); 
             }
         }
     });
@@ -246,6 +248,18 @@ function timer(val) {
     }, 1000)
 
 }
+
+function NetworkError() {
+    button1.disabled = true
+    button2.disabled = true
+    button3.disabled = true
+    button4.disabled = true
+    text.textContent = "Network ERROR, Reloading..." 
+    setTimeout(function() {
+        window.location.href = 'artists.html';
+    }, 2000)
+}
+
 
 timeDiv.appendChild(scoreText)
 timeDiv.appendChild(timeLeft)
