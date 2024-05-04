@@ -17,16 +17,11 @@ let linksJSON = localStorage.getItem('links');
 let links = JSON.parse(linksJSON);
 console.log(links)
 
-
-
 let lyrics_excerpt, song, randomButtonIndex, url, gameState, fetched;
 let wrongSongs = [];
 let score = 0;
 start()
 timer(90)
-
-timeLeft.textContent = "T" + time
-scoreText.textContent = "S" + score
 
 function getRandomLink(links) {
     const randomIndex = Math.floor(Math.random() * links.length);
@@ -260,6 +255,8 @@ function NetworkError() {
     }, 2000)
 }
 
+timeLeft.textContent = "T" + time
+scoreText.textContent = "S" + score
 
 timeDiv.appendChild(scoreText)
 timeDiv.appendChild(timeLeft)
